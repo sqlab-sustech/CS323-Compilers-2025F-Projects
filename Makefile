@@ -18,9 +18,3 @@ $(OUTPUT_DIR)/%Parser.java : %.g4
 clean:
 	rm -rf $(OUTPUT_DIR)
 
-jar:
-	mvn jar:jar
-
--include conf/proj.mk
--include conf/handin.mk
-
