@@ -9,9 +9,9 @@ public class Main {
         Grader grader1 = new Grader(fis);
         grader1.run();
 
-        System.out.println("---");
-
-        Grader grader = new Grader("1 + 2");
-        grader.run();
+//        System.out.println("---");
+//
+//        Grader grader = new Grader("1 + 2");
+//        grader.run();
     }
 }
