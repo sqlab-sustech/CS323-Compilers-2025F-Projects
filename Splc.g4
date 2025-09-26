@@ -43,7 +43,7 @@ AMP     : '&';
 SEMI    : ';';
 COMMA   : ',';
 LPAREN  : '(';
-REAREN  : ')';
+RPAREN  : ')';
 LBRACE  : '{';
 RBRACE  : '}';
 LBRACK  : '[';
