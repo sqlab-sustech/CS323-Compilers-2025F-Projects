@@ -1,0 +1,30 @@
+Parse Tree:
+(program
+  (globalDef
+    (specifier int) main ( funcArgs ) { 
+    (statement
+      (specifier int)
+      (varDec x) = 
+      (expression
+        (expression 100) + 
+        (expression 25)
+      ) ; 
+    )
+    (statement
+      (specifier int)
+      (varDec y) = 
+      (expression
+        (expression x) + 
+        (expression 10)
+      ) ; 
+    )
+    (statement
+      return 
+      (expression x) ; 
+    ) } 
+  ) <EOF> 
+)
+
+constexpr:
+125
+not a constexpr.

@@ -1,9 +1,1 @@
-int main(){
-    // 21312
-    int a = 1 + 2;
-    /*
-    qmaksm
-    // 1213
-    */
-    return 0;
-}
+int abcd;

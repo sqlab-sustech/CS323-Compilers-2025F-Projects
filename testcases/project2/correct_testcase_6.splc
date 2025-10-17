@@ -1,0 +1,6 @@
+int main() {
+    int a = 10 + 11 % 5;
+    int d = a - 10;
+    int result = -1 * (100 - (25 * 3) + 50 / 2);
+    return result;
+}
