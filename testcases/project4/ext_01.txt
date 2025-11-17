@@ -1,0 +1,2 @@
+Line 9: Unexpected Type: for operator =, lhs: int[20], rhs: struct s0
+Line 11: Unexpected Type: int[20][10]

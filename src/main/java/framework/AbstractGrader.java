@@ -1,6 +1,8 @@
 package framework;
 
 import framework.project3.Project3SemanticError;
+import framework.project4.Project4Exception;
+import framework.project4.Project4SemanticError;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -34,6 +36,15 @@ public abstract class AbstractGrader {
         this.writer.flush();
         this.onError(semanticError);
         System.exit(0);
+    }
+
+    public void reportSemanticError(Project4SemanticError error) {
+        this.writer.println(error.message);
+        this.writer.flush();
+    }
+
+    public void reportSemanticError(Project4Exception exception) {
+        reportSemanticError(exception.error);
     }
 
     protected void onError(Project3SemanticError semanticError) {

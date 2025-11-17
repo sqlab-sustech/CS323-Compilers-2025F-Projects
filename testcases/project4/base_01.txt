@@ -1,0 +1,3 @@
+Line 6: Unexpected Type: for operator =, lhs: int, rhs: int[2]
+Line 7: Unexpected Type: for operator =, lhs: int[30][20], rhs: int[30][20]
+Line 9: Unexpected Type: int[30][20]

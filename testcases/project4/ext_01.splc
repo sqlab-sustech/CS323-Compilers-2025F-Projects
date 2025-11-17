@@ -1,0 +1,12 @@
+struct s0 {
+    int a[10][20];
+    int b;
+};
+
+int main() {
+    struct s0 vars;
+    vars.b = 123;
+    vars.a[1] = vars;
+
+    return vars.a;
+}
