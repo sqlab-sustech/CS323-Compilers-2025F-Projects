@@ -1,0 +1,9 @@
+Line 10: badIdent: identifier is not a function: im_a_variable
+Line 11: badIdent: identifier is not a variable: im_a_function
+Line 13: Unexpected Type: for operator =, lhs: int[20], rhs: int
+Line 14: Unexpected Type: int[20]
+Line 16: Unexpected Type: for operator ==, lhs: int[20][10], rhs: int[20]
+Line 17: lvalue: lvalue is required.
+Line 19: badCall: param count mismatch, requires: 2, given: 3
+Line 20: badCall: 2-th param mismatch
+Line 22: Unexpected Type: int[20][10]

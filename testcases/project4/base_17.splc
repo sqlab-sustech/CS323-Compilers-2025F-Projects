@@ -1,0 +1,13 @@
+int X[5];
+int get_int() {
+    return X[1];
+}
+int main() {
+    X[get_int()] = get_int() == 1;
+    X / 2;
+    get_int()--;
+    // 局部变量定义：若 ASSIGN expression 子句存在，使用 [2.2.14] 规则对此处的 expression 与变量的定义类型进行检查。
+    int x = X;
+    int y[11] = X[1] == 10;
+    return 0;
+}
