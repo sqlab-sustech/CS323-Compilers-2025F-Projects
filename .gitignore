@@ -1,6 +1,8 @@
 ### CS323 Template ###
 #### Ignore generated ####
 src/main/java/generated
+project5_testcases/bin
+project5_testcases/ir
 
 *.tar
 *.tar.gz

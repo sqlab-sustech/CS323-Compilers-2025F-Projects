@@ -1,0 +1,15 @@
+struct RT {
+  int A;
+  int B[10][20];
+  int C;
+};
+struct ST {
+  int X;
+  int Y;
+  struct RT Z;
+};
+
+int foo(struct ST *s) {
+   *(&s[1].Z.B[5][13]) = 1;
+   return 0;
+}

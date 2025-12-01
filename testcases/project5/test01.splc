@@ -1,0 +1,34 @@
+int readint();
+int writeint(int out);
+int setseed(int seed);
+int getrand();
+int assert_eq(int where, int given, int expected);
+
+struct b {
+    struct b *ptr1;
+    struct a *ptr2;
+};
+
+struct a {
+    struct b b0;
+    int qwq;
+};
+
+int main0(int i, struct a aa) {
+    struct a a0;
+    a0.b0.ptr2->qwq = 1;
+
+    struct a *pa = &a0;
+
+    int arr[10];
+    arr[0] = 1;
+    arr[1] = 2;
+    int *p = &pa[1].qwq;
+    p = &(pa + 1)->qwq;
+    p = &(*(pa + 1)).qwq;
+    *p = 3;
+    p = &arr[4];
+    *p = 0;
+    int *pp = 0;
+    return 0;
+}

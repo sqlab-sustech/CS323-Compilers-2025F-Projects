@@ -1,0 +1,8 @@
+struct b {
+    struct b *ptr1;
+    struct a {
+        int a;
+        int b;
+    } *ptr2;
+};
+struct a a0;

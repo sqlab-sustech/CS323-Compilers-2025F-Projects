@@ -1,5 +1,6 @@
 package framework;
 
+import framework.llvm.IRBuilder;
 import framework.project3.Project3SemanticError;
 import framework.project4.Project4Exception;
 import framework.project4.Project4SemanticError;
@@ -11,17 +12,19 @@ import java.util.List;
 public abstract class AbstractGrader {
     private final InputStream sourceStream;
     private final PrintStream writer;
+    private final PrintStream irWriter;
     private final List<Project3SemanticError> errors = new ArrayList<>();
     private final boolean isJudgeMode;
 
-    public AbstractGrader(InputStream sourceStream, OutputStream outputStream) {
+    public AbstractGrader(InputStream sourceStream, OutputStream outputStream, OutputStream irOutputStream) {
         this.sourceStream = sourceStream;
         this.writer = new PrintStream(outputStream);
+        this.irWriter = new PrintStream(irOutputStream);
         this.isJudgeMode = System.getenv("COMPILER_JUDGER") != null;
     }
 
     public AbstractGrader(InputStream sourceStream) {
-        this(sourceStream, System.out);
+        this(sourceStream, System.out, System.out);
     }
 
     public InputStream getSourceStream() {
@@ -54,6 +57,11 @@ public abstract class AbstractGrader {
     public void print(String message) {
         this.writer.print(message);
         this.writer.flush();
+    }
+
+    public void printIR(IRBuilder ir) {
+        this.irWriter.print(ir.print());
+        this.irWriter.flush();
     }
 
     /**

@@ -1,0 +1,46 @@
+int readint();
+int writeint(int out);
+int setseed(int seed);
+int getrand();
+int assert_eq(int given, int expected);
+
+struct str1 {
+    int qwq;
+    int quq;
+};
+
+int func(struct str1 s0) {
+    s0.qwq = 123;
+    return s0.quq;
+}
+
+int func2(struct str1 *s0) {
+    s0->qwq = 123;
+    return s0->quq;
+}
+int main1() {
+    struct str1 local;
+    local.qwq = 1;
+    local.quq = 3;
+    assert_eq(func(local), 3);
+    assert_eq(local.qwq, 1);
+
+    local.qwq = 1;
+    local.quq = 3;
+    int ret = func2(&local);
+    assert_eq(ret, 3);
+    assert_eq(local.qwq, 123);
+    return 0;
+}
+
+int main0() {
+    int i = 0;
+    int j = 123;
+    if (i && j) {
+        i = 123;
+        return 5;
+    } else {
+        i = 456;
+    }
+    return i;
+}

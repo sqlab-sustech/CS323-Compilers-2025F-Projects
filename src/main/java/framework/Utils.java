@@ -119,4 +119,7 @@ public class Utils {
         return payload instanceof Token ? ((Token) payload).getText() : t.getPayload().toString();
     }
 
+    public static boolean isStringNullOrEmpty(String str) {
+        return str == null || str.isEmpty();
+    }
 }
