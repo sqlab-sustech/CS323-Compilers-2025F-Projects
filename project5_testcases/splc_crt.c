@@ -10,13 +10,17 @@ int writeint(int out) {
     printf("%d ", out);
     return 0;
 }
-static unsigned int randnum = 0;
+static unsigned long long randnum = 0;
+static const unsigned int LCG_a = 1103515245;
+static const unsigned int LCG_c = 12345;
+
 int setseed(int seed) {
-    randnum = (unsigned int) seed;
+    randnum = (unsigned long long) seed;
     return 0;
 }
 int getrand() {
-    return rand_r(&randnum) % 100000;
+    randnum = randnum * LCG_a + LCG_c;
+    return (unsigned int)(randnum / 65536) % 32768;
 }
 
 int assert_eq(int where, int given, int expected) {

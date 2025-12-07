@@ -4,25 +4,22 @@ int setseed(int seed);
 int getrand();
 int assert_eq(int where, int given, int expected);
 
-int ptr_test(int **ptr) {
-    int local;
-    *ptr = &local;
-    return 0;
+int global_var;
+
+int func0(int q) {
+    global_var = global_var * q;
+    return global_var + 4;
 }
 
-struct s0 {
-    int qwq;
-    int arr[10];
-};
 int main0() {
-    int *ptr;
-    ptr_test(&ptr);
-    *ptr = 114514;
-
-    struct s0 s;
-    struct s0 *p = &s;
-
-    p[1].qwq = 1233;
-    
+    global_var = readint();
+    if (readint() >= 20) {
+        global_var= (+global_var);
+    } else {
+        global_var = -global_var;
+    }
+    int res = func0(readint());
+    global_var = global_var + res;
+    writeint(global_var);
     return 0;
 }

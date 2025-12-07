@@ -56,6 +56,14 @@ ir:
 	@$(MAKE) genir
 	@$(MAKE) compileir
 
+# --- For Grader -------------------
+
+# Single Target for each ref
+CHECK_REF_SINGLE 		:= $(patsubst %,check_%,$(REF_DIRS))
+
+$(CHECK_REF_SINGLE): check_%: %
+	@bash check.sh $*
+
 # -------------------
 
 $(REF_IR_TARGETS): ir/%.ll: %/splc.c $(IDEA_TARGET_UPDATE_HINT)
@@ -74,7 +82,7 @@ $(IR_TARGETS): bin/%: ir/opt_%.ll $(CRT)
 $(IR_TARGETS_ASAN): bin/%_asan: ir/opt_%.ll $(CRT)
 	@mkdir -p bin
 	@echo "$(GREEN)Compiling $< with ASAN to $@ ...$(RESET)"
-	@$(CC) $(CFLAGS) -Wno-override-module -fsanitize=address -o $@ $^
+	@$(CC) $(CFLAGS) -Wno-override-module -fsanitize=address -fno-sanitize-recover=all -o $@ $^
 
 $(REF_DIRS): %: $(REF_OUTPUT)/% $(REF_OUTPUT)/%_asan $(REF_OUTPUT)/%_ubsan
 
@@ -84,11 +92,11 @@ $(REF_TARGETS_STD): $(REF_OUTPUT)/%: %/splc.c $(CRT)
 
 $(REF_TARGETS_ASAN): $(REF_OUTPUT)/%_asan: %/splc.c $(CRT)
 	@mkdir -p $(dir $@)
-	$(CC) $(CFLAGS) -fsanitize=address -o $@ $^
+	$(CC) $(CFLAGS) -fsanitize=address -fno-sanitize-recover=all -o $@ $^
 
 $(REF_TARGETS_UBSAN): $(REF_OUTPUT)/%_ubsan: %/splc.c $(CRT)
 	@mkdir -p $(dir $@)
-	$(CC) $(CFLAGS) -fsanitize=undefined -o $@ $^
+	$(CC) $(CFLAGS) -fsanitize=undefined -fno-sanitize-recover=all -o $@ $^
 
 clean:
 	rm -rf bin ir

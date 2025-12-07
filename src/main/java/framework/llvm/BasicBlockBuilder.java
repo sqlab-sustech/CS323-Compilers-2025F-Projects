@@ -147,6 +147,7 @@ public class BasicBlockBuilder {
 
 
     public IRValue alloca(IRType type, String name) {
+        name = fb.validateIdent(name);
         if (stackAllocas != null) {
             IRValue v = new IRValue(name, IRType.pointer());
             stackAllocas.add(new Pair<>(v, type));

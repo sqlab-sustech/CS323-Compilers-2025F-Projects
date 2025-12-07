@@ -4,32 +4,55 @@ int setseed(int seed);
 int getrand();
 int assert_eq(int where, int given, int expected);
 
-struct str1 {
-    int qwq;
-    int quq;
-};
+int array[1000];
 
-int func(struct str1 s0) {
-    s0.qwq = 123;
-    return s0.quq;
-}
-
-int func2(struct str1 *s0) {
-    s0->qwq = 123;
-    return s0->quq;
+int select_max(int from, int to) {
+    int max_idx = from;
+    int i = from + 1;
+    
+    // 遍历指定区间
+    while (i <= to) {
+        if (array[i] > array[max_idx]) {
+            max_idx = i;
+        }
+        i = i + 1;
+    }
+    return max_idx;
 }
 
 int main0() {
-    struct str1 local;
-    local.qwq = 1;
-    local.quq = 3;
-    assert_eq(1, func(local), 3);
-    assert_eq(2, local.qwq, 1);
+    int seed = readint();
+    setseed(seed);
+    int n = readint();
+    int i = 0;
+    while (i<n) {
+        array[i] = getrand();
+        ++i;
+    }
 
-    local.qwq = 1;
-    local.quq = 3;
-    int ret = func2(&local);
-    assert_eq(3, ret, 3);
-    assert_eq(4, local.qwq, 123);
+    int j = n - 1;
+    while (j > 0) {
+        // 找出 0 到 j 范围内最大值的下标
+        int max_pos = select_max(0, j);
+        
+        // 交换 array[max_pos] 和 array[j]
+        // 将最大的数放到当前的最后面
+        int temp = array[j];
+        array[j] = array[max_pos];
+        array[max_pos] = temp;
+        
+        j = j - 1;
+    }
+
+    i = 0;
+    while (i < n - 1) {
+        int prev = array[i];
+        int next = array[i + 1];
+        int less = prev <= next;
+        assert_eq(i, less, 1);
+        writeint(prev);
+        i = i + 1;
+        
+    }
     return 0;
 }

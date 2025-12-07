@@ -75,8 +75,8 @@ public abstract class Inst {
                 case add -> String.format("%s = add %s %s, %s", result.llvmName(), ty.llvmName(), op1.llvmName(), op2.llvmName());
                 case sub -> String.format("%s = sub %s %s, %s", result.llvmName(), ty.llvmName(), op1.llvmName(), op2.llvmName());
                 case mul -> String.format("%s = mul %s %s, %s", result.llvmName(), ty.llvmName(), op1.llvmName(), op2.llvmName());
-                case div -> String.format("%s = div %s %s, %s", result.llvmName(), ty.llvmName(), op1.llvmName(), op2.llvmName());
-                case rem -> String.format("%s = rem %s %s, %s", result.llvmName(), ty.llvmName(), op1.llvmName(), op2.llvmName());
+                case div -> String.format("%s = sdiv %s %s, %s", result.llvmName(), ty.llvmName(), op1.llvmName(), op2.llvmName());
+                case rem -> String.format("%s = srem %s %s, %s", result.llvmName(), ty.llvmName(), op1.llvmName(), op2.llvmName());
                 default -> null;
             };
         }
