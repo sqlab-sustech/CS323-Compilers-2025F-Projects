@@ -11,6 +11,19 @@ struct str1 {
 
 struct str1 global;
 
+int dont_change_me(struct str1 s) {
+    s.qwq = getrand();
+    int  i=0;
+    while (i < 10) {
+        int j=0;
+        while(j < 20) {
+            s.array[i][j++] = getrand();
+        }
+        i++;
+    }
+    return 0;
+}
+
 int main0() {
     int seed = readint();
     setseed(seed);
@@ -24,6 +37,8 @@ int main0() {
         }
         i++;
     }
+
+    dont_change_me(global);
 
     writeint(global.qwq);
     i=0;
